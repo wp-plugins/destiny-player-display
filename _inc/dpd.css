@@ -1,0 +1,321 @@
+#dpd-container {
+    width: 520px;
+}
+
+#dpd-span {
+    float: none;
+    position: relative;
+    top: 10px;
+    font-size: 28px;
+    color: #000;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #FFF, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+#banner-block {
+    min-width: 520px;
+    max-width: 520px;
+    max-height: 96px;
+    text-align:center;
+}
+
+#emblem {
+    width: 520px;
+    height: 96px;
+}
+
+#emblem-img {
+    z-index:2;
+    max-width: 100px; float:left;
+}
+
+#story-block {
+    width: 100%;
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    background-color: #000000;
+}
+
+#failed {
+    width: 520px;
+    height: 320px;
+    position: relative;
+    top:50%;
+    text-align: center;
+    background-image: url('img/failed.jpg');
+    font-size: 60px;
+    color: #000;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #FFF, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+#failed-text{
+    font-size: 45px;
+    text-transform: capitalize;
+    color: #000;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #FFF, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+#top-block {
+    width: 520px;
+    background-image: url('img/top.jpg');
+}
+
+#story-kills-title {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    line-height: 27px;
+    font-size: 15px;
+    color: white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-top: 1px dashed black;
+}
+
+#story-kills {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px dashed white;
+}
+
+#story-precision-kills-title {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    color: white;
+    line-height: 27px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-right: 1px dashed white;
+}
+
+#story-ability-kills-title {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    line-height: 27px;
+    color: white;
+}
+
+#story-precision-kills {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-right: 1px dashed white;
+    border-bottom: 1px dashed white;
+}
+
+#story-ability-kills {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px dashed white;
+}
+
+#story-kill-death-title {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.65);
+    line-height: 27px;
+    text-align: center;
+    color: white;
+}
+
+#story-kill-death {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px dashed black;
+}
+
+#pvp-block {
+    width: 100%;
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    background-color: #000000;
+}
+
+#bottom-block {
+    width: 520px;
+    background-image: url('img/bottom.jpg');
+}
+
+#pvp-wins-title {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px dashed white;
+}
+
+#pvp-wins {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    line-height: 47px;
+    color: white;
+    border-bottom: 1px dashed white;
+}
+
+#pvp-kills-title {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    line-height: 27px;
+    font-size: 15px;
+    color: white;
+}
+
+#pvp-kills {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px dashed white;
+}
+
+#pvp-precision-kills-title {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    color: white;
+    line-height: 27px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-right: 1px dashed white;
+}
+
+#pvp-ability-kills-title {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    color: white;
+    line-height: 27px;
+}
+
+#pvp-precision-kills {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-right: 1px dashed white;
+    border-bottom: 1px dashed white;
+}
+
+#pvp-ability-kills {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    line-height: 47px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px dashed white;
+}
+
+#pvp-kill-death-title {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    color: white;
+}
+
+#pvp-kill-death {
+    width: 100%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    line-height: 47px;
+    color: white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px solid white;
+}
+
+#grimore-title {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.65);
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px solid white;
+}
+
+#grimore-score {
+    position: relative;
+    float: left;
+    width: 50%;
+    background-color: rgba(30, 36, 43, 0.45);
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px solid white;
+}
+
+#username {
+    text-transform: capitalize;
+    margin-bottom: 2px;
+}
