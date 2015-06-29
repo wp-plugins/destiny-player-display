@@ -47,7 +47,7 @@ Use the shortcode provided wherever you would like the widget to appear.
 No, a Destiny username and platform are all that is needed to pull character data. You will never have to log on to
 use the plugin.
 
-= Am I limited on the number of character widgets I can display on the page?
+= Am I limited on the number of character widgets I can display on the page? =
 
 No. Although, you probably want to keep the number of characters to a minimum to ensure optimal page load times.
 
