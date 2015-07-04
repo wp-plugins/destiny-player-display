@@ -7,7 +7,7 @@ require_once('class.library.php');
 Plugin Name: Destiny Player Display
 Plugin URI: http://rabbitsfoot.co.uk/
 Description: Display Destiny player statistics on Wordpress
-Version: 1.1
+Version: 1.2
 Author: Rabbits Foot Limited
 Author URI: http://rabbitsfoot.co.uk/
 License: GPLv2 or later

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: destiny, api, playstation, xbox
 Requires at least: 3.2
 Tested up to: 4.2.2
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 Destiny Player Display provides a widget/shortcode to display your Destiny scorecard on the Wordpress platform.
@@ -61,6 +61,11 @@ Not at the moment, but we're looking into it for a future release. All suggestio
 
 == Changelog ==
 
+= 1.2 =
+*Release Date - 4th July, 2015*
+
+* Calls to Bungie API now use cURL rather than file_get_contents
+
 = 1.1 =
 *Release Date - 27th June, 2015*
 
@@ -75,6 +80,9 @@ Not at the moment, but we're looking into it for a future release. All suggestio
 * First release.
 
  == Upgrade Notice ==
+
+= 1.2. =
+ Removed file_get_contents in favour of cURL for maximum performance and compatibility.
 
  = 1.1. =
  Minified CSS to improve page load time. Friendly error message when widget can't connect to the Bungie API.

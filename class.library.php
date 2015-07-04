@@ -31,6 +31,29 @@ class DPD_Library {
     ];
 
     /**
+     * Universal function for cURL'ing to Bungie API
+     *
+     * @param $uri
+     * @return array|bool|mixed
+     */
+    private function callBungie($uri)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        if(!$result = json_decode(curl_exec($ch), true)) {
+            $result = false;
+        }
+
+        curl_close($ch);
+
+        return $result;
+    }
+
+    /**
      * Translate a given hash.
      *
      * @param $hash
@@ -54,17 +77,17 @@ class DPD_Library {
      */
     protected function fetchPlayer($username, $platform)
     {
-        $uri = 'http://bungie.net/Platform/Destiny/SearchDestinyPlayer/'.$platform.'/'.$username.'?ignorecase=true';
-        if($json = json_decode(@file_get_contents($uri), true)) {
+        $result = false;
+        $uri = 'http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/'.$platform.'/'.$username;
+        $json = $this->callBungie($uri);
 
-            if (isset($json['Response'][0]['membershipId'])) {
-                return array(
-                    'membershipId' => $json['Response'][0]['membershipId'],
-                    'membershipType' => $platform
-                );
-            }
-            return false;
+        if (isset($json['Response'][0]['membershipId'])) {
+            $result = array(
+                'membershipId' => $json['Response'][0]['membershipId'],
+                'membershipType' => $platform
+            );
         }
+        return $result;
     }
 
     /**
@@ -74,14 +97,18 @@ class DPD_Library {
      * @param $membershipId
      * @return array
      */
-    public function fetchGrimoireForWidget($platform, $membershipId) {
-        $stats = json_decode(@file_get_contents('http://www.bungie.net/Platform/Destiny/Vanguard/Grimoire/'.$platform.'/'.$membershipId.'/'.$characterId), true);
+    public function fetchGrimoireForWidget($platform, $membershipId)
+    {
+        $result = false;
+        $uri = 'http://www.bungie.net/Platform/Destiny/Vanguard/Grimoire/'.$platform.'/'.$membershipId;
 
-        $response = array(
-            'grimoire_cards_acquired' => isset($stats['Response']['data']['cardCollection']) ? count($stats['Response']['data']['cardCollection']) : '??'
-        );
+        if( $stats = $this->callBungie($uri) ) {
+            $result = array(
+                'grimoire_cards_acquired' => isset($stats['Response']['data']['cardCollection']) ? count($stats['Response']['data']['cardCollection']) : '??'
+            );
+        }
 
-        return $response;
+        return $result;
     }
 
     /**
@@ -94,25 +121,27 @@ class DPD_Library {
      */
     public function fetchHistoricalStatsForWidget($platform, $membershipId, $characterId)
     {
+        $response = false;
         $uri = 'http://www.bungie.net/Platform/Destiny/Stats/'.$platform.'/'.$membershipId.'/'.$characterId;
-        $stats = json_decode(@file_get_contents($uri), true);
 
-        $response = array(
-            'story' => array(
-                'kills' => isset($stats['Response']['story']['allTime']['kills']) ? $stats['Response']['story']['allTime']['kills']['basic']['value'] : '??',
-                'precision_kills' => isset($stats['Response']['story']['allTime']['precisionKills']) ? $stats['Response']['story']['allTime']['precisionKills']['basic']['value'] : '??',
-                'ability_kills' => isset($stats['Response']['story']['allTime']['abilityKills']) ? $stats['Response']['story']['allTime']['abilityKills']['basic']['value'] : '??',
-                'kill_death' => isset($stats['Response']['story']['allTime']['killsDeathsRatio']) ? round($stats['Response']['story']['allTime']['killsDeathsRatio']['basic']['value'], 2) : '??',
+        if( $stats = $this->callBungie($uri) ) {
+            $response = array(
+                'story' => array(
+                    'kills' => isset($stats['Response']['story']['allTime']['kills']) ? $stats['Response']['story']['allTime']['kills']['basic']['value'] : '??',
+                    'precision_kills' => isset($stats['Response']['story']['allTime']['precisionKills']) ? $stats['Response']['story']['allTime']['precisionKills']['basic']['value'] : '??',
+                    'ability_kills' => isset($stats['Response']['story']['allTime']['abilityKills']) ? $stats['Response']['story']['allTime']['abilityKills']['basic']['value'] : '??',
+                    'kill_death' => isset($stats['Response']['story']['allTime']['killsDeathsRatio']) ? round($stats['Response']['story']['allTime']['killsDeathsRatio']['basic']['value'], 2) : '??',
 
-            ),
-            'crucible' => array(
-                'wins' => isset($stats['Response']['allPvP']['allTime']['activitiesWon']) ? $stats['Response']['allPvP']['allTime']['activitiesWon']['basic']['value'] : '??',
-                'kills' => isset($stats['Response']['allPvP']['allTime']['kills']) ? $stats['Response']['allPvP']['allTime']['kills']['basic']['value'] : '??',
-                'precision_kills' => isset($stats['Response']['allPvP']['allTime']['precisionKills']) ? $stats['Response']['allPvP']['allTime']['precisionKills']['basic']['value'] : '??',
-                'ability_kills' => isset($stats['Response']['allPvP']['allTime']['abilityKills']) ? $stats['Response']['allPvP']['allTime']['abilityKills']['basic']['value'] : '??',
-                'kill_death' => isset($stats['Response']['allPvP']['allTime']['killsDeathsRatio']) ? round($stats['Response']['allPvP']['allTime']['killsDeathsRatio']['basic']['value'], 2) : '??',
-            )
-        );
+                ),
+                'crucible' => array(
+                    'wins' => isset($stats['Response']['allPvP']['allTime']['activitiesWon']) ? $stats['Response']['allPvP']['allTime']['activitiesWon']['basic']['value'] : '??',
+                    'kills' => isset($stats['Response']['allPvP']['allTime']['kills']) ? $stats['Response']['allPvP']['allTime']['kills']['basic']['value'] : '??',
+                    'precision_kills' => isset($stats['Response']['allPvP']['allTime']['precisionKills']) ? $stats['Response']['allPvP']['allTime']['precisionKills']['basic']['value'] : '??',
+                    'ability_kills' => isset($stats['Response']['allPvP']['allTime']['abilityKills']) ? $stats['Response']['allPvP']['allTime']['abilityKills']['basic']['value'] : '??',
+                    'kill_death' => isset($stats['Response']['allPvP']['allTime']['killsDeathsRatio']) ? round($stats['Response']['allPvP']['allTime']['killsDeathsRatio']['basic']['value'], 2) : '??',
+                )
+            );
+        }
         return $response;
     }
 
@@ -161,19 +190,18 @@ class DPD_Library {
      */
     public function fetchCharacters($username, $platform)
     {
-        $characters = array();
+        $result = array();
 
         if($player = $this->fetchPlayer($username, $platform)) {
             $uri = 'http://bungie.net/Platform/Destiny/'.$player['membershipType'].'/Account/'.$player['membershipId'].'?ignorecase=true';
-            $json = json_decode(@file_get_contents($uri), true);
 
-            foreach ($json['Response']['data']['characters'] as $character) {
-                $characters[] = $character;
+            if( $json = $this->callBungie($uri) ) {
+                foreach ($json['Response']['data']['characters'] as $character) {
+                    $result[] = $character;
+                }
             }
-
-            return $characters;
         }
-        return false;
+        return $result;
     }
 
     public function fetchCharacterDescriptions($username, $network_id)
